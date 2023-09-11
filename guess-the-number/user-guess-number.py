@@ -21,5 +21,9 @@ def guess(x):
     print(f'Congratulations! You guessed the correct number, which is {random_number}.')
     print(f'You took {guess_count} guesses.')
 
+    play_again = input('Do you want to play again? (yes/no): ').lower()
+    if play_again == 'yes':
+        guess(x)
+
 # Call the guess function to start the game
 guess(10)
