@@ -6,6 +6,7 @@ def guess(x):
     guess_count = 0
 
     while number_guessed != random_number:
+        try:
             guess_count += 1
             number_guessed = int(input(f'Guess a number between 1 and {x}: '))
 
@@ -14,9 +15,11 @@ def guess(x):
             elif number_guessed > random_number:
                 print('Sorry, guess again. Too high. Try lower!')
 
+        except ValueError:
+            print('Invalid input. Please enter a valid number.')
+
     print(f'Congratulations! You guessed the correct number, which is {random_number}.')
     print(f'You took {guess_count} guesses.')
-
 
 # Call the guess function to start the game
 guess(10)
