@@ -5,6 +5,7 @@ def computer_guess(number):
     low = 1
     high = number
     feedback = ""
+    attempts = 0
 
     while feedback != "c":
         guess = random.randint(low, high)
@@ -14,7 +15,7 @@ def computer_guess(number):
             ).lower()
 
         attempts += 1
-
+        
         if feedback == "h":
             high = guess - 1
         elif feedback == "l":
