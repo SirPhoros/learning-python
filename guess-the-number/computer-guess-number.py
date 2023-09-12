@@ -20,11 +20,17 @@ def computer_guess():
     attempts = 0
 
     while feedback != "c":
-        guess = random.randint(low, high)
-        while feedback not in ("h", "l", "c"):
-            feedback = input(
-                f"Is {guess} too high (H), too low (L), or correct (C)? "
-            ).lower()
+        if low <= high:
+            guess = random.randint(low, high)
+        else:
+            print(
+                "Invalid range. The upper bound must be greater than the lower bound."
+            )
+            break  # Exit the loop when the range is invalid
+
+        feedback = input(
+            f"Is {guess} too high (H), too low (L), or correct (C)? "
+        ).lower()
 
         attempts += 1
 
@@ -32,12 +38,13 @@ def computer_guess():
             high = guess - 1
         elif feedback == "l":
             low = guess + 1
-        else:
+        elif feedback != "c":
             print("Please enter 'H' for too high, 'L' for too low, or 'C' for correct.")
 
-    print(
-        f"\nYay! The computer guessed your number, {guess}, correctly in {attempts} attempts!"
-    )
+    if feedback == "c":
+        print(
+            f"\nYay! The computer guessed your number, {guess}, correctly in {attempts} attempts!"
+        )
 
     play_again = input("Do you want to play again? (yes/no): ").lower()
     if play_again == "yes":
