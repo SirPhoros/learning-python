@@ -1,11 +1,26 @@
 import random
 
 
-def computer_guess(number):
-    low = 1
-    high = number
+def computer_guess():
+    # Get the range of numbers from the user
+    while True:
+        try:
+            low = int(input("Enter the lower bound of the range: "))
+            high = int(input("Enter the upper bound of the range: "))
+            if low >= high:
+                raise ValueError("Upper bound must be greater than the lower bound")
+            break
+        except ValueError as ve:
+            print(f"Invalid input: {ve}")
+
+    print(f"\nGreat! The computer will now guess a number between {low} and {high}.")
+
+    # Initialize variables
     feedback = ""
     attempts = 0
+
+    # Set a random seed for reproducibility (optional)
+    # random.seed(42)
 
     while feedback != "c":
         guess = random.randint(low, high)
@@ -15,7 +30,7 @@ def computer_guess(number):
             ).lower()
 
         attempts += 1
-        
+
         if feedback == "h":
             high = guess - 1
         elif feedback == "l":
@@ -29,8 +44,8 @@ def computer_guess(number):
 
     play_again = input("Do you want to play again? (yes/no): ").lower()
     if play_again == "yes":
-        computer_guess(number)
+        computer_guess()
 
 
 # Call the computer_guess function to start the game
-computer_guess(10)
+computer_guess()
