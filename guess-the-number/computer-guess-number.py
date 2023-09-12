@@ -21,5 +21,9 @@ def computer_guess(number):
 
     print(f'Yay! The computer guessed your number, {guess}, correctly!')  
 
+    play_again = input('Do you want to play again? (yes/no): ').lower()
+    if play_again == 'yes':
+        computer_guess(number)
+
 
 computer_guess(10)
