@@ -19,9 +19,6 @@ def computer_guess():
     feedback = ""
     attempts = 0
 
-    # Set a random seed for reproducibility (optional)
-    # random.seed(42)
-
     while feedback != "c":
         guess = random.randint(low, high)
         while feedback not in ("h", "l", "c"):
