@@ -21,7 +21,7 @@ def hangman():
     lives = 6
 
     # getting user input
-    while len(word_letters) > 0:
+    while len(word_letters) > 0 and lives > 0:
         # letters used
         print("You have used these letters: ", " ".join(used_letters))
 
@@ -44,6 +44,5 @@ def hangman():
 
         else:
             print("Invalid character. Please try again")
-
 
 hangman()
