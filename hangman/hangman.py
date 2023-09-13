@@ -30,10 +30,10 @@ def hangman():
         print(f"You have {lives} lives left.")
 
         # letters used
-        print("You have used these letters: ", " ".join(used_letters))
+        print(f"You have used these letters: {' '.join(used_letters)}")
 
         # what current word is:
-        print("Current word:", display_word(word, used_letters))
+        print(f"Current word: {display_word(word, used_letters)}")
 
         user_letter = input("Guess a letter: ").upper()
         if user_letter in alphabet - used_letters:
@@ -52,9 +52,9 @@ def hangman():
             print("Invalid character. Please try again")
 
     if lives == 0:
-        print("You died, sorry. The word was", word)
+        print(f"You died, sorry. The word was {word}")
     else:
-        print("You guessed the word", word, "!!")
+        print(f"You guessed the word {word}!!")
 
     play_again = input("Do you want to play again? (yes/no): ").lower()
     if play_again == "yes":
