@@ -26,8 +26,7 @@ def hangman():
 
     # getting user input
     while len(word_letters) > 0 and lives > 0:
-
-        # lives left 
+        # lives left
         print(f"You have {lives} lives left.")
 
         # letters used
@@ -56,6 +55,10 @@ def hangman():
         print("You died, sorry. The word was", word)
     else:
         print("You guessed the word", word, "!!")
+
+    play_again = input("Do you want to play again? (yes/no): ").lower()
+    if play_again == "yes":
+        hangman()
 
 
 hangman()
