@@ -23,7 +23,7 @@ def hangman():
     # getting user input
     while len(word_letters) > 0:
         # letters used
-        print("You have used therese letters: ", " ".join(used_letters))
+        print("You have used these letters: ", " ".join(used_letters))
 
         # what current word is:
         word_list = [letter if letter in used_letters else "-" for letter in word]
