@@ -11,6 +11,10 @@ def get_valid_word(words):
     return word.upper()
 
 
+def display_word(word, used_letters):
+    return " ".join([letter if letter in used_letters else "-" for letter in word])
+
+
 def hangman():
     word = get_valid_word(words)
     word_letters = set(word)  # letters in the word
@@ -22,12 +26,15 @@ def hangman():
 
     # getting user input
     while len(word_letters) > 0 and lives > 0:
+
+        # lives left 
+        print(f"You have {lives} lives left.")
+
         # letters used
         print("You have used these letters: ", " ".join(used_letters))
 
         # what current word is:
-        word_list = [letter if letter in used_letters else "-" for letter in word]
-        print("Current word: ", " ".join(word_list))
+        print("Current word:", display_word(word, used_letters))
 
         user_letter = input("Guess a letter: ").upper()
         if user_letter in alphabet - used_letters:
@@ -46,8 +53,9 @@ def hangman():
             print("Invalid character. Please try again")
 
     if lives == 0:
-        print ('You died, sorry. The word was', word)
+        print("You died, sorry. The word was", word)
     else:
-        print('You guessed the word', word, '!!')
+        print("You guessed the word", word, "!!")
+
 
 hangman()
