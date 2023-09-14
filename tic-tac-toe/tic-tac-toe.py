@@ -44,7 +44,7 @@ def play(game, x_player, o_player, print_game=True):
         # iterate while the game still has empty squares in the board
         while game.empty_squares():
             # get the move from the appropriate player
-            if letter == "0":
+            if letter == "O":
                 square = o_player.get_move(game)
             else:
                 square = x_player.get_move(game)
@@ -54,3 +54,4 @@ def play(game, x_player, o_player, print_game=True):
                     print(letter + f"makes a move to square {square}")
                     game.print_board()
                     print("")
+                letter = "O" if letter == "X" else "X"  #switch players
