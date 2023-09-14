@@ -13,9 +13,30 @@ class TicTacToe:
         for row in number_board:
             print("| " + " | ".join(row) + " |")
 
-    def available_moved(self):
+    def available_moves(self):
         moves = []
         for i, spot in enumerate(self.board):
             if spot == " ":
                 moves.append(i)
         return moves
+
+    def empty_squares(self):
+        return " " in self.board
+
+    def num_empty_squares(self):
+        return self.board.count(" ")
+
+
+def play(game, x_player, o_player, print_game=True):
+    if print_game:
+        game.print_board_nums()
+
+        letter = "X"  # starting letter
+
+        # iterate while the game still has empty squares in the board
+        while game.empty_squares():
+            # get the move from the appropriate player
+            if letter == "0":
+                square = o_player.get_move(game)
+            else:
+                square = x_player.get_move(game)
