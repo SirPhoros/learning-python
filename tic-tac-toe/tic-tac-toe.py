@@ -1,4 +1,5 @@
 from player import HumanPlayer, RandomComputerPlayer
+import time
 
 
 class TicTacToe:
@@ -70,34 +71,39 @@ class TicTacToe:
         return False
 
 
+# ...
 def play(game, x_player, o_player, print_game=True):
     if print_game:
         game.print_board_nums()
 
-        letter = "X"  # starting letter
+    letter = "X"  # starting letter
 
-        # iterate while the game still has empty squares in the board
-        while game.empty_squares():
-            # get the move from the appropriate player
-            if letter == "O":
-                square = o_player.get_move(game)
-            else:
-                square = x_player.get_move(game)
+    # iterate while the game still has empty squares in the board
+    while game.empty_squares():
+        # get the move from the appropriate player
+        if letter == "O":
+            square = o_player.get_move(game)
+        else:
+            square = x_player.get_move(game)
 
-            if game.make_move(square, letter):
-                if print_game:
-                    print(letter + f" makes a move to square {square}")
-                    game.print_board()
-                    print("")
+        if game.make_move(square, letter):
+            if print_game:
+                print(letter + f" makes a move to square {square}")
+                game.print_board()
+                print("")
 
-                    if game.current_winner:
-                        if print_game:
-                            print(letter + "wins")
+                if game.current_winner:
+                    if print_game:
+                        print(letter + " wins")
 
-                letter = "O" if letter == "X" else "X"  # switches players
+            letter = "O" if letter == "X" else "X"  # switches players
 
-                if print_game:
-                    print("It's a tie")
+            # Add a delay after each move
+            time.sleep(0.8)
+
+    if print_game:
+        print("It's a tie")
+
 
 # Initialise game
 if __name__ == "__main__":
@@ -105,4 +111,3 @@ if __name__ == "__main__":
     o_player = RandomComputerPlayer("O")
     game = TicTacToe()
     play(game, x_player, o_player, print_game=True)
-
