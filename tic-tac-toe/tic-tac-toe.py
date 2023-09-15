@@ -99,4 +99,12 @@ def play(game, x_player, o_player, print_game=True):
                 if print_game:
                     print("It's a tie")
 
+# Initialise game
+if __name__ == "__main__":
+    x_player = HumanPlayer("X")
+    o_player = RandomComputerPlayer("O")
+    game = TicTacToe()
+    play(game, x_player, o_player, print_game=True)
 
+    if game.current_winner is None:
+        print("It's a tie")
