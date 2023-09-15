@@ -1,5 +1,8 @@
+from player import HumanPlayer, RandomComputerPlayer
+
+
 class TicTacToe:
-    def __ini__(self):
+    def __init__(self):
         self.board = [" " for _ in range(9)]  # The will represent the 3x3 grid
         self.current_winner = None
 
@@ -8,7 +11,7 @@ class TicTacToe:
             print("| " + " | ".join(row) + " |")
 
     @staticmethod
-    def print_board_numbs():
+    def print_board_nums():
         number_board = [[str(i) for i in range(j * 3, (j + 1) * 3)] for j in range(3)]
         for row in number_board:
             print("| " + " | ".join(row) + " |")
@@ -55,14 +58,16 @@ class TicTacToe:
         ## ONLY IF THE SQAURE IS AN EVEN NUMBER, AS THESE ARE THE ONLY POSSIBLE TO WIN A DIAGONAL
         # (0, 2, 4, 6, 8)
         if square % 2 == 0:
-            diagonal1 = [self.board[i] for i in [0, 4, 8]] # left to right diagonal
+            diagonal1 = [self.board[i] for i in [0, 4, 8]]  # left to right diagonal
             if all([spot == letter for spot in diagonal1]):
                 return True
 
-            diagonal2 = [self.board[i] for i in [2, 4, 6]] # right to left diagonal
+            diagonal2 = [self.board[i] for i in [2, 4, 6]]  # right to left diagonal
             if all([spot == letter for spot in diagonal2]):
-            return True 
-            
+                return True
+
+        # if all of these conditions fail:
+        return False
 
 
 def play(game, x_player, o_player, print_game=True):
@@ -93,3 +98,5 @@ def play(game, x_player, o_player, print_game=True):
 
                 if print_game:
                     print("It's a tie")
+
+
