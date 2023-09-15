@@ -4,6 +4,8 @@
 
 Welcome to the Tic-Tac-Toe Python game! In this project, I've explored Python classes and implemented a classic game that most of us have played on a piece of paper. 🚀🐍
 
+This project also brings back fond memories of my time at Northcoders. I look back at the Object-Oriented Programming (OOP) sprint with great nostalgia and gratitude. Those experiences equipped me with valuable skills, and I'm glad to have learned from them, and translated them from JavaScript to Python.
+
 ## Python Classes and Game Logic
 
 - **Python Classes:** This project showcases the use of Python classes to model the game of Tic-Tac-Toe. We've created three classes: `Player`, `RandomComputerPlayer`, and `HumanPlayer`. These classes effectively manage player moves and the game's logic.
@@ -27,6 +29,4 @@ During this project, I've gained valuable insights into Python programming:
 1. Run the `tic-tac-toe.py` file to start the game.
 2. Players take turns making moves by entering numbers (0-8) corresponding to the board positions.
 3. The game ends when a player wins or it's a tie.
-4. Enjoy a classic game of Tic-Tac-Toe and challenge your friends!
-
-Feel free to provide feedback, share your experiences, or suggest improvements. Let's keep the Python conversation going! 💬💡
+4. Enjoy a classic game of Tic-Tac-To
