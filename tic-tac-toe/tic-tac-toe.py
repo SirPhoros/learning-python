@@ -41,10 +41,16 @@ class TicTacToe:
         # winner if 3 in a row, collumn or diagonal
         ## Row
         row_ind = square // 3
-        row = self.board[row_ind*3 : (row_ind + 1) * 3]
+        row = self.board[row_ind * 3 : (row_ind + 1) * 3]
         if all([spot == letter for spot in row]):
             return True
-        
+        ## Column
+        col_ind = square % 3
+        column = [self.board[col_ind + i * 3] for i in range(3)]
+        if all([spot == letter for spot in column]):
+            return True
+
+
 def play(game, x_player, o_player, print_game=True):
     if print_game:
         game.print_board_nums()
