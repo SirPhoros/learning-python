@@ -106,5 +106,3 @@ if __name__ == "__main__":
     game = TicTacToe()
     play(game, x_player, o_player, print_game=True)
 
-    if game.current_winner is None:
-        print("It's a tie")
