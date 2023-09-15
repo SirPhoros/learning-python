@@ -91,10 +91,8 @@ def play(game, x_player, o_player, print_game=True):
                 print(letter + f" makes a move to square {square}")
                 game.print_board()
                 print("")
-
                 if game.current_winner:
-                    if print_game:
-                        print(letter + " wins")
+                    break  # Exit the loop if someone has won
 
             letter = "O" if letter == "X" else "X"  # switches players
 
@@ -102,7 +100,10 @@ def play(game, x_player, o_player, print_game=True):
             time.sleep(0.8)
 
     if print_game:
-        print("It's a tie")
+        if game.current_winner:
+            print(f"{game.current_winner} wins")
+        else:
+            print("It's a tie")
 
 
 # Initialise game
