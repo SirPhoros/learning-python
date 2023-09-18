@@ -78,4 +78,26 @@ class SuperComputerPlayer(Player):
         else:
             best = {"position": None, "score": math.inf}  # score should minimise
 
-            
+        for possible_move in state.available_moves():
+            # step 1: make a move, try that spo
+            state.make_move(possible_move, player)
+
+            # step 2: recurse using minimax to simulate a game after that move
+                # alternate players
+            sim_score = self.minimax(state, other_player)
+
+            # step 3: undo the move
+            state.board[possible_move] = " "
+            state.current_winner = None
+            sim_score["position"] = possible_move
+
+            # step 4: update the dictionary if necessary
+            if player == max_player:
+                if sim_score["score"] > best["score"]:
+                    best = sim_score  # replace best
+
+            else:
+                if sim_score["score"] < best["score"]:
+                    best = sim_score  # replace best
+
+        return best
