@@ -50,7 +50,7 @@ class SuperComputerPlayer(Player):
             square = random.choice(game.available_moves())
         # get the square based off the minimax algorithm
         else:
-            square = self.minimax(game, self.letter)['position']
+            square = self.minimax(game, self.letter)["position"]
         return square
 
     def minimax(self, state, player):
@@ -63,12 +63,13 @@ class SuperComputerPlayer(Player):
         if state.current_winner == other_player:
             # return position AND score as it is needed to keep track for minimax to work
 
-            return {
-                "position": None,
-                "score": 1 * (state.num_empty_square() + 1)
-                if other_player == max_player
-                else -1 * (state.num_empty_square() + 1),
-            }
+            empty_squares = state.num_empty_squares()
+            if other_player == max_player:
+                score = 1 * (empty_squares + 1)
+            else:
+                score = -1 * (empty_squares + 1)
+            return {"position": None, "score": score}
+
         # no empty squares
         elif not state.empty_squares():
             return {"position": None, "score": 0}
@@ -83,7 +84,7 @@ class SuperComputerPlayer(Player):
             state.make_move(possible_move, player)
 
             # step 2: recurse using minimax to simulate a game after that move
-                # alternate players
+            # alternate players
             sim_score = self.minimax(state, other_player)
 
             # step 3: undo the move
