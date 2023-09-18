@@ -1,31 +1,32 @@
 import math
 import random
 
-
 class Player:
     def __init__(self, letter):
-        # letter is X or O as in Tic-Tac-Toe
+        """
+        Initialize a player with a letter (X or O).
+        """
         self.letter = letter
 
     def get_move(self, game):
+        """
+        Get the player's move based on the current game state.
+        """
         pass
 
-
 class RandomComputerPlayer(Player):
-    def __init__(self, letter):
-        super().__init__(letter)
-
     def get_move(self, game):
-        # get a random valid spot for our next move
+        """
+        Get a random valid move for the computer player.
+        """
         square = random.choice(game.available_moves())
         return square
 
-
 class HumanPlayer(Player):
-    def __init__(self, letter):
-        super().__init__(letter)
-
     def get_move(self, game):
+        """
+        Get the human player's move through user input.
+        """
         valid_square = False
         val = None
         while not valid_square:
@@ -39,19 +40,17 @@ class HumanPlayer(Player):
                 print("Invalid input. Please enter a valid number (0-8).")
         return val
 
-
 class SuperComputerPlayer(Player):
-    def __init__(self, letter):
-        super().__init__(letter)
-
     def get_move(self, game):
-        # randomly choose one, as there is no minimax algorithm to choose.
+        """
+        Get the computer player's move using a minimax algorithm.
+        """
         if len(game.available_moves()) == 0:
             square = random.choice(game.available_moves())
-        # get the square based off the minimax algorithm
         else:
             square = self.minimax(game, self.letter)["position"]
         return square
+
 
     def minimax(self, state, player):
         max_player = self.letter
