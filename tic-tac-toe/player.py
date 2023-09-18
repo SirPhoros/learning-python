@@ -1,5 +1,12 @@
 import math
 import random
+from enum import Enum
+
+
+class Letter(Enum):
+    X = "X"
+    O = "O"
+
 
 class Player:
     def __init__(self, letter):
@@ -14,6 +21,7 @@ class Player:
         """
         pass
 
+
 class RandomComputerPlayer(Player):
     def get_move(self, game):
         """
@@ -21,6 +29,7 @@ class RandomComputerPlayer(Player):
         """
         square = random.choice(game.available_moves())
         return square
+
 
 class HumanPlayer(Player):
     def get_move(self, game):
@@ -40,6 +49,7 @@ class HumanPlayer(Player):
                 print("Invalid input. Please enter a valid number (0-8).")
         return val
 
+
 class SuperComputerPlayer(Player):
     def get_move(self, game):
         """
@@ -50,7 +60,6 @@ class SuperComputerPlayer(Player):
         else:
             square = self.minimax(game, self.letter)["position"]
         return square
-
 
     def minimax(self, state, player):
         max_player = self.letter
