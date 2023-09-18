@@ -1,4 +1,4 @@
-from player import HumanPlayer, RandomComputerPlayer, SuperComputerPlayer
+from player import HumanPlayer, RandomComputerPlayer, SuperComputerPlayer, Letter
 import time
 
 
@@ -70,31 +70,31 @@ class TicTacToe:
         # if all of these conditions fail:
         return False
 
+
 def play(game, x_player, o_player, print_game=True):
     if print_game:
         game.print_board_nums()
 
-    letter = "X"  # starting letter
+    current_letter = Letter.X  # Use the Letter enum to represent the starting letter
 
-    # iterate while the game still has empty squares in the board
     while game.empty_squares():
-        # get the move from the appropriate player
-        if letter == "O":
+        if current_letter == Letter.O:  # Use the Letter enum for player comparison
             square = o_player.get_move(game)
         else:
             square = x_player.get_move(game)
 
-        if game.make_move(square, letter):
+        if game.make_move(square, current_letter.value):
             if print_game:
-                print(letter + f" makes a move to square {square}")
+                print(current_letter.value + f" makes a move to square {square}")
                 game.print_board()
                 print("")
                 if game.current_winner:
-                    break  # Exit the loop if someone has won
+                    break
 
-            letter = "O" if letter == "X" else "X"  # switches players
+            current_letter = (
+                Letter.O if current_letter == Letter.X else Letter.X
+            )  # Use the Letter enum
 
-            # Add a delay after each move
             time.sleep(0.8)
 
     if print_game:
@@ -104,9 +104,8 @@ def play(game, x_player, o_player, print_game=True):
             print("It's a tie")
 
 
-# Initialise game
 if __name__ == "__main__":
-    x_player = HumanPlayer("X")
-    o_player = SuperComputerPlayer("O")
+    x_player = HumanPlayer(Letter.X)
+    o_player = SuperComputerPlayer(Letter.O)
     game = TicTacToe()
     play(game, x_player, o_player, print_game=True)
