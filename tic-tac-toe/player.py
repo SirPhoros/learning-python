@@ -72,3 +72,10 @@ class SuperComputerPlayer(Player):
         # no empty squares
         elif not state.empty_squares():
             return {"position": None, "score": 0}
+
+        if player == max_player:
+            best = {"position": None, "score": -math.inf}  # each score should maximise
+        else:
+            best = {"position": None, "score": math.inf}  # score should minimise
+
+            
