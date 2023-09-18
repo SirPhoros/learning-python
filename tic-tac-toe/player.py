@@ -38,3 +38,16 @@ class HumanPlayer(Player):
             except ValueError:
                 print("Invalid square. Try again.")
         return val
+
+
+class SuperComputerPlayer(Player):
+    def __init__(self, letter):
+        super().__init__(letter)
+
+    def get_move(self, game):
+        # randomly choose one, as there is no minimax algorithm to choose.
+        if len(game.available_moves()) == 0:
+            square = random.choice(game.available_moves())
+        # get the square based off the minimax algorithm
+        else:
+            square = self.minimax(game, self.letter)
