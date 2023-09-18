@@ -29,14 +29,14 @@ class HumanPlayer(Player):
         valid_square = False
         val = None
         while not valid_square:
-            square = input(self.letter + "'s turn. Input move (0-8): ")
+            square = input(f"{self.letter}'s turn. Input move (0-8): ")
             try:
                 val = int(square)
                 if val not in game.available_moves():
-                    raise ValueError
+                    raise ValueError("Invalid move. Please choose an available square.")
                 valid_square = True
             except ValueError:
-                print("Invalid square. Try again.")
+                print("Invalid input. Please enter a valid number (0-8).")
         return val
 
 
