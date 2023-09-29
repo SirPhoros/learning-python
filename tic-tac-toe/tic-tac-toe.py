@@ -4,7 +4,7 @@ import time
 
 class TicTacToe:
     def __init__(self):
-        self.board = [" " for _ in range(9)]  # The will represent the 3x3 grid
+        self.board = [" " for _ in range(9)]  # This will represent the 3x3 grid
         self.current_winner = None
 
     def print_board(self):
